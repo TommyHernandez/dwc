@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>DWEC Tunes</title>
+    <meta charset="utf-8 ">
+    <script src="js/main.js "></script>
+    <link rel="stylesheet" href="estilo.css" media="screen" />
+</head>
+
+<body>
+    <!-- Formulario con un campo de texto para teclear la canción y un botón para enviar la
+canción teclada a la lista “listaCanciones” -->
+
+    <input type="text" id="CancionTextInput" size="40" placeholder="¿Canción?" />
+    <input type="button" id="BotonAnadir" value="AñadirCancion" />
+    <input type="button" id="guardar" value="guardar" />
+    <input type="button" id="cargar" value="cargar" />
+
+    <ol id="listaCanciones">
+        <!-- Aquí irá la lista de canciones. Por ahora está vacía, pero la rellenaremos con
+código JavaScript -->
+    </ol>
+    <span class="oculto rojo" id="oculto">Has cometido un error</span>
+</body>
+
+</html>
