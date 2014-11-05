@@ -1,6 +1,8 @@
-.sticky{
-    background-color: #e4f0a1;
-    height: 200px;
+li {
+    list-style: none;
+}
+.verde {
+     height: 200px;
     width: 200px;
     float: left;
     margin: 25px;
@@ -8,7 +10,27 @@
     -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
     box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
     padding: 0.6em;
+    background-color: #6ec68d;
 }
-li{
-    list-style: none;
+.azul {
+     height: 200px;
+    width: 200px;
+    float: left;
+    margin: 25px;
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    padding: 0.6em;
+    background-color: #6ecee0;
+}
+.amarillo {
+     height: 200px;
+    width: 200px;
+    float: left;
+    margin: 25px;
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    padding: 0.6em;
+    background-color: #edf0a2;
 }

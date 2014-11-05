@@ -1,18 +1,23 @@
-<!doctype html>
 <html lang="es">
 
 <head>
-    <title>Noticas</title>
-    <meta charset=”utf-8”>
+    <title>Notas personales</title>
+    <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/notas.css">
     <script src="js/notas.js"></script>
 </head>
 
 <body>
-    <form>
-        <input type="text" id="note_text">
-        <input type="button" id="add_button" value="Añadir una nota nueva">
-    </form>
+       <h1>Notas Personales</h1>
+       <small>Haga clic sobre una nota para eliminarla</small>
+        <input type="text" id="note_text"/>
+        <select id="color">
+            <option value="verde">Verde</option>
+            <option value="azul">Azul</option>
+            <option value="amarillo">Amarillo</option>
+        </select>
+        <input type="button" id="add_button" value="Añadir una nota nueva"/>
+    
     <ul id="notas">
     </ul>
 </body>
