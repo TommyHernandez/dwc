@@ -12,3 +12,10 @@
 li{
     list-style: none;
 }
+.oculto {
+    display: none;
+}
+.rojo{
+    color: GREEN;
+    background: RED;
+}

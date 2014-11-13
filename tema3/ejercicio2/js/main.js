@@ -1,3 +1,6 @@
+function funcion(){
+    alert('Hola amijos');
+}
 function main() {
     var imagenh = [],
         imagens = [];
@@ -23,6 +26,7 @@ function main() {
         invis.classList.toggle('oculto');
 
     });
+    
 
 }
 

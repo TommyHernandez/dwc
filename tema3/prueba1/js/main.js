@@ -18,10 +18,9 @@ function manejadorClicBoton() {
     var ul = document.getElementById('listaCanciones');
     var cancion = document.getElementById('CancionTextInput').value; //usaremos solo value para coger el valor del campo
     if (cancion == "") {
-        
         span.classList.toggle('oculto');
     } else {
-        
+
         if (liant.length == 0) {
             var nuevoli = document.createElement("li");
             nuevoli.innerHTML = cancion;
@@ -33,7 +32,7 @@ function manejadorClicBoton() {
             ul.appendChild(nuevoli);
             var arrayli = [];
             for (var i = 0; i < liant.length; i++) {
-                arrayli[i] = liant[i].textContent.toLowerCase();
+                arrayli[i] = liant[i].textContent;
             }
             arrayli.sort();
             for (var i = 0; i < liant.length; i++) {
@@ -45,6 +44,9 @@ function manejadorClicBoton() {
 }
 //Funcion principal
 function inicio() {
+    /*if (!Modernizr.localstorage) {
+       
+    } else {}  */
     var boton = document.getElementById('BotonAnadir'),
         campo = document.getElementById('CancionTextInput');
     var guardar = document.getElementById('guardar'),
@@ -60,13 +62,14 @@ function inicio() {
         }
     };
     cargar.onclick = function () {
-             var lista = document.getElementById('listaCanciones'),
-            numero = localStorage.length;        
+        var lista = document.getElementById('listaCanciones'),
+            numero = localStorage.length;
         for (var i = 0; i < localStorage.length; i++) {
             var nuevoli = document.createElement("li");
             nuevoli.innerHTML = localStorage.getItem('st_' + i);
             lista.appendChild(nuevoli);
         }
     };
-    }
-    window.onload = inicio;
+
+}
+window.onload = inicio;
