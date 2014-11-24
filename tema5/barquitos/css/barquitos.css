@@ -1,0 +1,87 @@
+body {
+
+    margin: auto;
+
+    width: 1024px;
+
+    background-color: black;
+
+}
+
+div#panel {
+
+    position: relative;
+
+    width: 1024px;
+
+    height: 863px;
+
+    background: black url("panel.jpg") no-repeat left top;
+
+}
+
+div#areaMensaje {
+
+    position: absolute;
+
+    top: 0px;
+
+    left: 0px;
+
+    color: rgb(83, 175, 19);
+
+}
+
+.tocado {
+
+    background: transparent url("barco.png") no-repeat center center;
+
+}
+
+.agua {
+
+    background: transparent url("agua.png") no-repeat center center;
+
+}
+
+form {
+
+    position: absolute;
+
+    bottom: 0px;
+
+    right: 0px;
+
+    padding: 15px;
+
+    background-color: rgb(83, 175, 19);
+
+}
+
+form input {
+
+    background-color: #98CF71;
+
+    border-color: rgb(83, 175, 19);
+
+    font-size: 1em;
+
+}
+
+table {
+
+    border-spacing: 0px;
+
+    position: absolute;
+
+    left: 173px;
+
+    top: 98px;
+
+}
+
+td {
+
+    width: 94px;
+
+    height: 94px;

@@ -35,18 +35,18 @@ function expresionKey(evt) {
     var expresion = /[A-z]\d+/;
     if (this.value.length < 8) {
         this.nextElementSibling.innerText = "Debe de tener minimo 8 caracteres";
+        return false;
     } else if (expresion.test(this.value)) {
         this.nextElementSibling.innerText = "";
     } else {
         this.nextElementSibling.innerText = "No cumple los requisitos minimos";
+        return false;
     }
-
+    return true;
 }
 
-function validarFormulario() {
-    //en construccion
-
-
+function isValidEmail(mail) {
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail);
 }
 
 function inicio() {
@@ -55,23 +55,55 @@ function inicio() {
     var campoclave2 = document.getElementById('key2');
     var mail = document.getElementById('mail');
     var labelBots = document.getElementById('labelbots');
+    var inputBot = document.getElementById('antibots');
     //preparamos los aleatorios
-    var aleatorio = Math.floor(Math.random() * (10 - 0 + 1)) + 0;
-    var aleatorio1 = Math.floor(Math.random() * (10 - 0 + 1)) + 0;
+    var aleatorio = Math.floor(Math.random() * (10 - 1 + 1)) + 0;
+    var aleatorio1 = Math.floor(Math.random() * (10 - 1 + 1)) + 0;
     //fin
     //definimos la cadena
     var cad = aleatorio + " + " + aleatorio1;
+    var result = (aleatorio + aleatorio1) * 5 + 3;
+    inputBot.setAttribute("data-bot", result);
     //insertamos la cadena
     labelBots.innerText = labelBots.textContent + " " + cad;
     //fin de ambas cosas
     document.getElementById('antibots').addEventListener("blur", validarVacio);
     mail.addEventListener("blur", validarVacio);
     campoclave.addEventListener("blur", expresionKey);
-    campoclave2.addEventListener("blur", repetirClave)
+    campoclave2.addEventListener("blur", repetirClave);
+    //boton enviar
+    document.getElementById('enviar').addEventListener("click", function (evt) {
+        evt.preventDefault();
+        //capturamos nodos
+        var nombre = document.getElementById('nombre').value;
+        var bot = document.getElementById('antibots');
+        var antibot = (bot.getAttribute('data-bot') - 3) / 5;
+        var mail = document.getElementById('mail').value;
+        //
+
+        if (document.getElementById('condiciones').checked) {
+
+            if (nombre.length <= 3) {
+                alert('El nombre es MAYOR de 3 caracteres.');
+            } else if (!isValidEmail(mail)) {
+                alert('Debe de ser un mail valido!');
+
+            } else if (!repetirClave) {
+
+            } else if (bot.value != antibot) {
+                alert('Largo bot');
+            }
 
 
+        } else {
+            alert("Debes de aceptar los terminos y condicones");
+        }
 
+    });
 }
+
+
+
 
 window.onload = inicio;
 window.onbeforeunload = confirmaSalida; //Si se cierra la página pide confirmación

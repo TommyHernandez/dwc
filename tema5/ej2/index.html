@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head lang="es">
+    <meta charset="UTF-8">
+    <title>Cuestionario</title>
+    <link rel="stylesheet" href="estilo.css" type="text/css" media="screen" />
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <section class="centrado">
+        <h2>Cuestionario HTML5 y Javascript</h2>
+        <form name="cuestionario" action="taco.pgp" method="POST">
+            <fieldset>
+                <legend>Parte 1</legend>
+                <label>Nombre</label>
+                <input type="text" id="nombre" name="nombre" value="" />
+                <br/>
+                <label>Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" value="" />
+                <br/>
+                <label>1. Cual es la etiqueta para enlazar un archivo JS con nuestro HTML:</label>
+                <br>
+                <input type="radio" name="pregunta1" value="body" />body
+                <br/>
+                <input type="radio" name="pregunta1" value="head" />head
+                <br/>
+                <input type="radio" name="pregunta1" value="script" />script
+                <br/>
+                <input type="radio" name="pregunta1" value="link" />link
+                <br/>
+                <span></span>
+
+                <label>2.Complete la siguiente sentencia</label>
+                <p>"link rel="stylesheet"
+                    <select id="pregunta2" name="pregunta2">
+                        <option>src</option>
+                        <option>href</option>
+                    </select>type="text/css" media="screen"</p>
+            </fieldset>
+            <br/>
+            <label>3. Cuales de los siguientes lenguajes forman parte de la Tecnologia HTML5</label>
+            <input type="checkbox" name="jsp" value="jsp">JSP
+            <input type="checkbox" name="html" value="html">HTML
+            <input type="checkbox" name="php" value="php">PHP
+            <input type="checkbox" name="css" value="css">CSS
+            <input type="checkbox" name="js" value="js">JavaScript
+            <br/>
+            <label>4. Escriba cual es el metodo para enviar formularios que utilizamos cuando queremos enviar fotos.</label>
+            <input type="text" name="p4" value="" />
+
+            <fieldset>
+                <legend>Parte 2</legend>
+                <label>Extra NO evaluable, dejanos tu comentario</label>
+                <br/>
+                <textarea id="sugerencia" cols="35" rows="4" maxlength="100"></textarea>
+                <span></span>
+            </fieldset>
+            <input type="button" id="enviar" value="Correccion" />
+            <input type="reset" id="reseteo" value="LimpiarRespuestas" />
+        </form>
+        <div id="resultado">
+            <p id="alumno"></p>
+            <p id="aciertos"></p>
+            <p id="tiempo"></p>
+            <p id="porcentaje"></p>
+            <p id="errores"></p>
+            <p id="contestadas"></p>
+            <p id="no_contestadas"></p>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
