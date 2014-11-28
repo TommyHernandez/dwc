@@ -24,11 +24,12 @@ function validarTest() {
     var labelPorcentaje = document.getElementById('porcentaje');
     var labelErrores = document.getElementById('errores');
     var labelContestadas = document.getElementById('contestadas');
-    var labelNoContestadas = document.getElementById('no_contestadas');   
-    
+    var labelNoContestadas = document.getElementById('no_contestadas');       
     //Comenzamos con la validacion
     var pregunta1 = document.getElementsByName('pregunta1');
-    alert(pregunta1);
+    var pregunta2 = document.getElementById('pregunta2');
+    var pregunta3 = document.getElementsByName('pregunta3');
+   
     if  (pregunta1[2].checked){
         contestadas++;
         acertadas++;
@@ -37,6 +38,16 @@ function validarTest() {
     }else{
         contestadas++;
         erroneas++;
+    }
+    if  (pregunta2.value == " "){
+        no_contestadas++;
+    }else if (pregunta2.value == "href"){
+        contestadas++;
+        acertadas++
+        
+    }else{
+        erroneas++;
+        contestadas++;
     }
     //Asignaciones Finales
     labelAcertadas.innerText = "Acertadas: "+acertadas;
@@ -47,7 +58,16 @@ function validarTest() {
 }
 
 function main() {
+    var tiempoLabel = document.getElementById('tiempo');
+    var tiempo;
     //
+    function timestap (){
+        tiempo++;
+        tiempoLabel.innerHTML = "";
+        tiempoLabel.contains = "LLevas "+ tiempo + " S";
+        
+    }
+    setInterval(timestap, 1000);
     //capturamos los elementos para colocarle escuchadores
     var sugerencia = document.getElementById('sugerencia');
     var botonEnviar = document.getElementById('enviar');
