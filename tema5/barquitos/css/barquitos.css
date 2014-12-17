@@ -9,38 +9,35 @@ body {
 }
 
 div#panel {
-
     position: relative;
-
     width: 1024px;
 
     height: 863px;
 
-    background: black url("panel.jpg") no-repeat left top;
+    background: black url("../panel.jpg") no-repeat left top;
+
 
 }
 
-div#areaMensaje {
-
+#areamensaje {
     position: absolute;
-
     top: 0px;
-
-    left: 0px;
-
+    left: 200px;
     color: rgb(83, 175, 19);
-
+    font-size: 2rem;
+    width: 200px;
+    z-index: 15px;
 }
 
 .tocado {
 
-    background: transparent url("barco.png") no-repeat center center;
+    background: transparent url("../barco.png") no-repeat center center;
 
 }
 
 .agua {
 
-    background: transparent url("agua.png") no-repeat center center;
+    background: transparent url("../agua.png") no-repeat center center;
 
 }
 
@@ -84,4 +81,15 @@ td {
 
     width: 94px;
 
-    height: 94px;
+    height: 94px;    
+}
+#notificacion{
+
+}
+#score {
+        
+}
+#score h2 {
+    color: #FFF;
+    border: 1px solid #00FF44;
+}

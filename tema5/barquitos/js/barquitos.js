@@ -109,7 +109,7 @@ var modelo = {
 
 var vista = {
     visualizarMensaje: function (mensaje) {
-        var areaMensaje = document.getElementById("areaMensaje");
+        var areaMensaje = document.getElementById("areamensaje");
         areaMensaje.innerText = mensaje;
     },
 
@@ -149,7 +149,7 @@ function analizaIntento(intento) {
     if (intento === null || intento.length !== 2) {
         alert("Teclea una letra y un número");
     } else {
-        var fila = alfabeto.indexOf(intento.charAt(0)); //Convierte la letra en un índice de fila
+        var fila = intento.charAt(0); //Convierte la letra en un índice de fila
         var columna = intento.charAt(1);
 
         if (isNaN(fila) || isNaN(columna)) {
@@ -166,16 +166,14 @@ function analizaIntento(intento) {
 
 
 // Manejadores de eventos
-
 function manejadorBotonFuego() {
     var entradaIntento = document.getElementById("entradaIntento");
-    var intento = entradaIntento.value.toUpperCase();
+    var intento = this.id;
 
-    controlador.procesarIntento(intento);
-
-    entradaIntento.value = "";
+    controlador.procesarIntento(intento);//le pasamos el id de lo que tocamos
+    
 }
-
+/*
 function manejadorKeyPress(e) {
     var botonFuego = document.getElementById("botonFuego");
 
@@ -189,7 +187,7 @@ function manejadorKeyPress(e) {
     }
 }
 
-window.onload = init;
+*/
 
 function init() {
     var imagenes = "agua.png, panel.jpg, barco.png".split(",");
@@ -201,14 +199,14 @@ function init() {
         tempImg[i] = document.createElement("img");
         tempImg[i].src = imagenes[i];
     }
-    // manejador botón Fuego
-    var botonFuego = document.getElementById("botonFuego");
-    botonFuego.onclick = manejadorBotonFuego;
-
-    // control tecla pulsada, averiguamos si es return
-    var entradaIntento = document.getElementById("entradaIntento");
-    entradaIntento.onkeypress = manejadorKeyPress;
-
     // situa los barcos en el tablero
     modelo.generaLocalizacionesBarcos();
+    //capturamos td
+    var tede = document.getElementsByTagName('td');
+
+    for (var a = 0; a < tede.length; a++) {
+        tede[a].addEventListener("click", manejadorBotonFuego, false);
+        
+    }
 }
+window.addEventListener("load", init);

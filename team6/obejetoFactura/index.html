@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Objeto factura</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <h1>Facturas locales</h1>
+    <center>
+        <table id = "tabla-facturas">
+            <tr>
+                <th>Empresa</th>
+                <th>Cliente</th>
+                <th>productos</th>
+                <th>Total</th>
+            </tr>
+        </table>
+        <div id=menu>
+            <button id="ediEmp">Editar Empresa</button>
+            
+        </div>
+        <form id="formfact" action="#" method="post" name="formulario">
+            <label>
+                Cliente
+                <input type="text" id="cliente" name="cliente" value="" />
+            </label>
+                <label>
+                Dni del cliente
+                <input type="text" id="dni-cliente" name="dni-cliente" value="" />
+            </label>
+                Productos: Procesador
+                Numero de errores en este códico <input type="checkbox" id="elem" name="elem" />22 
+                <br/>
+                Sueldo de politico: <input type="checkbox" id="elem1" name="elem1" />32 
+                <br/>
+                <input type="checkbox" id="elem2" name="elem2"  />42
+                <br/>
+            
+            <input type="button" id="botonfactura" value="Añadir nueva Factura" />
+        </form>
+        
+        <form id ="formEmpresa" name="formEmpresa" class="oculto">
+            <label>
+               Nombre
+                <input type="text" id="nombreEmpresa" name="nombreEmpresa" value="" />
+            </label>
+            <label>
+                CIF:
+                <input type="text" id="cif" name="cif" value="" />
+            </label>
+            <input type="button" id="send" value="Enviar" />
+        </form>
+
+    </center>
+
+
+</body>
+
+</html>
