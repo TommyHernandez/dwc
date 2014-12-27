@@ -20,7 +20,10 @@ var objempresa = {
 var hoy = (new Date()).toUTCString();
 
 //Objetos a utilizar
-//objeto Factura
+/*objeto Factura:
+    Utilizaremos este como un objeto base para todos los demás, en la construccion de los objetos hijos utilizaremos Object.create()
+    y a la hora de ejecutar la funcion contructora usaremos el metodo call pra cambiar el contexto de ejecucion.
+*/
 var objetoFactura = {
     iva: 1.21,
     empresa: "",
@@ -28,19 +31,13 @@ var objetoFactura = {
     fecha: "",
     total: 0,
     lista: [],
-
-    getTotal: function () {
-        var total = this.total;
-        return total;
-    },
-
     constructor: function (empresa, cliente, lista, fecha) {
         this.empresa = empresa;
         this.cliente = cliente;
         this.lista = lista;
         this.fecha = fecha;
         for (var i = 0; i < this.lista.length; i++) {
-            this.total = this.total + lista[i].precio;
+            this.total = (this.total * 1)+ ( lista[i].precio * 1);
         }
     }
 
@@ -74,7 +71,7 @@ function colocarTabla(objeto) {
     }
 
     tdprod.appendChild(ul);
-    tdtotal.textContent = objeto.getTotal();
+    tdtotal.textContent = objeto.total;
     newtr.appendChild(tdcli);
     newtr.appendChild(tdemp);
     newtr.appendChild(tdprod);
@@ -109,29 +106,38 @@ function manejadorSendEmprsa() {
 En este manejador recuperamos la empresa que debe de estar en localStorage, comprobamos qe elementos estan check y creamos el objeto factura
 */
 function manejadorFactura() {
-    var nombreCli = document.getElementById('cliente');
-    var dniCli = document.getElementById('dni-cliente');
+    var nombreCli = document.getElementById('cliente').value;
+    var dniCli = document.getElementById('dni-cliente').value;
     var elemento = document.getElementById('elem');
     var elemento1 = document.getElementById('elem1');
     var elemento2 = document.getElementById('elem2');
     var nuevaFactura = Object.create(objetoFactura);
+    var nuevoCliente = Object.create(objcliente);
     var empresa = JSON.parse(localStorage.Empresa);
     var lista = [];
     if (elemento.checked) {
         lista.push({
             precio: elemento.value
         });
-    } else if (elemento1.checked) {
+    }
+    if (elemento1.checked) {
         lista.push({
             precio: elemento1.value
         });
-    } else if (elemento2.checked) {
+    } 
+    if (elemento2.checked) {
         lista.push({
             precio: elemento2.value
         });
     }
-    nuevaFactura.constructor(empresa, cliente, lista, hoy);
-    localStorage.setItem("factura"+localStorage.length+hoy, JSON.stringify(nuevaFactura));
+    /* En la construccion de los dos objetos siguientes utilizamos el metodo CALL de forma que cambiamos el contexto de ejecucion para que los 
+    valores s asigne al objeto actual  y no a los valores que vienen del padre*/
+    nuevoCliente.constr.call(nuevoCliente, nombreCli,dniCli);
+    nuevaFactura.constructor.call(nuevaFactura,empresa, nuevoCliente, lista, hoy);
+    //Generamos una id de factura, compuesta por la palabra factura, la longitud del storage y la fecha del momento
+    var idFact = "factura_"+localStorage.length+"_"+hoy;    
+    localStorage.setItem(idFact, JSON.stringify(nuevaFactura));
+    colocarTabla(nuevaFactura);//llamamos al metodo que añade en la tabla
 }
 
 //Funcion principal
@@ -144,5 +150,14 @@ function main() {
     botonEmpre.addEventListener('click', manejadorEmresa);
     botonfactura.addEventListener('click', manejadorFactura);
     botonSendEmpresa.addEventListener('click', manejadorSendEmprsa);
+    //Leemos localStorage para ver si hay alguna factura y presentarla en la tabla
+    for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key.substring(0, 8) == "factura_") {
+                var value = localStorage.getItem(key);
+                var objeto = JSON.parse(value);
+                colocarTabla(objeto);
+            }
+        }
 }
 window.addEventListener('load', main);
