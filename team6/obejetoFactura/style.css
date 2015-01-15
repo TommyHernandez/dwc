@@ -4,3 +4,30 @@
 #formfact {
    
 }
+
+#tabla-facturas {
+    padding: 10px;
+    text-align: center;
+    
+}
+
+#tabla-facturas{
+    padding: 8px;
+    margin: 4px;
+}
+
+#menu {
+    margin-right: 25px;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background-color: #f28846;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    background-color: #8ac9c9;
+}

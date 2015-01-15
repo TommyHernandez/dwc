@@ -66,7 +66,7 @@ function colocarTabla(objeto) {
     tdemp.textContent = objeto.empresa.nombre;
     for (var a = 0; a < objeto.lista.length; a++) {
         var newli = document.createElement('li');
-        newli.textContent = objeto.lista[a].precio;
+        newli.textContent =  objeto.lista[a].nombre+ " = " + objeto.lista[a].precio+" € ";
         ul.appendChild(newli);
     }
 
@@ -116,18 +116,24 @@ function manejadorFactura() {
     var empresa = JSON.parse(localStorage.Empresa);
     var lista = [];
     if (elemento.checked) {
-        lista.push({
+        lista.push({ 
+            nombre:"Producto1",
             precio: elemento.value
         });
-    }
-    if (elemento1.checked) {
+    }else if (elemento1.checked) {
         lista.push({
+            nombre:"Producto2",
             precio: elemento1.value
         });
-    } 
-    if (elemento2.checked) {
+    } else if (elemento2.checked) {
         lista.push({
+            nombre:"Producto3",
             precio: elemento2.value
+        });
+    }else{
+       lista.push({
+            nombre:"Vacio",
+            precio: 0
         });
     }
     /* En la construccion de los dos objetos siguientes utilizamos el metodo CALL de forma que cambiamos el contexto de ejecucion para que los 
