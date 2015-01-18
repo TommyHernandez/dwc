@@ -1,0 +1,71 @@
+html,
+body {
+    height: 100%;
+}
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: #e3e3e3;
+}
+.pie-pagina {
+    height: 55px;
+    width: 100%;
+    line-height: 55px;
+    background-color: #121222;
+}
+#mapa {
+    width: 100%;
+    height: 520px;
+    border-radius: 12px;
+    -webkit-box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.75);
+}
+#cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    height: 55px;
+    width: 100%;
+    line-height: 55px;
+    background-color: #121222;
+    color: #FFF;
+}
+#nav {
+   display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-around;
+    align-content: center;
+  /* width: 72.91666;/*1400/1920*/
+    flex: 1  
+}
+#nav li {
+    list-style: none;
+}
+.item {
+    flex: 1 1 240px;
+    list-style-type: none;
+}
+#sec-dias {
+    display: flex;
+    align-content: space-around;
+    align-items: center;
+}
+
+.columnas {
+    flex: 1 0 300px;
+    justify-content: center;
+    text-align: center; /*fallback*/
+    margin: 10px;
+    height: 400px;
+    background-color: #a2a0a0;
+    border-radius: 12px;
+    -webkit-box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.75);
+}
+.item a{
+    color: #FFF;
+}

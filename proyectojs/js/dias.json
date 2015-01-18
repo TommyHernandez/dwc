@@ -1,0 +1,114 @@
+{
+    "message": "accurate",
+    "cod": "200",
+    "count": 3,
+    "list": [{
+        "id": 7669249,
+        "name": "Sacromonte",
+        "coord": {
+            "lon": -3.59278,
+            "lat": 37.180828
+        },
+        "main": {
+            "temp": 274.545,
+            "temp_min": 274.545,
+            "temp_max": 274.545,
+            "pressure": 898.63,
+            "sea_level": 1024.3,
+            "grnd_level": 898.63,
+            "humidity": 100
+        },
+        "dt": 1421601498,
+        "wind": {
+            "speed": 1.13,
+            "deg": 165.5
+        },
+        "sys": {
+            "country": ""
+        },
+        "rain": {
+            "3h": 1
+        },
+        "clouds": {
+            "all": 92
+        },
+        "weather": [{
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }]
+    }, {
+        "id": 7668950,
+        "name": "Realejo-San Matías",
+        "coord": {
+            "lon": -3.59389,
+            "lat": 37.173328
+        },
+        "main": {
+            "temp": 274.545,
+            "temp_min": 274.545,
+            "temp_max": 274.545,
+            "pressure": 898.63,
+            "sea_level": 1024.3,
+            "grnd_level": 898.63,
+            "humidity": 100
+        },
+        "dt": 1421601499,
+        "wind": {
+            "speed": 1.13,
+            "deg": 165.5
+        },
+        "sys": {
+            "country": ""
+        },
+        "rain": {
+            "3h": 1
+        },
+        "clouds": {
+            "all": 92
+        },
+        "weather": [{
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }]
+    }, {
+        "id": 2517117,
+        "name": "Granada",
+        "coord": {
+            "lon": -3.60667,
+            "lat": 37.188171
+        },
+        "main": {
+            "temp": 274.855,
+            "temp_min": 274.855,
+            "temp_max": 274.855,
+            "pressure": 898.99,
+            "sea_level": 1024.77,
+            "grnd_level": 898.99,
+            "humidity": 100
+        },
+        "dt": 1421601499,
+        "wind": {
+            "speed": 1.16,
+            "deg": 162.002
+        },
+        "sys": {
+            "country": ""
+        },
+        "rain": {
+            "3h": 3
+        },
+        "clouds": {
+            "all": 92
+        },
+        "weather": [{
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }]
+    }]
+}
