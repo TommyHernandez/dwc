@@ -6,47 +6,31 @@
     <title>El tiempo en tu Ciudad</title>
     <link rel="stylesheet" href="css/estilos.css" type="text/css" />
     <link rel="stylesheet" href="js/toast/toastr.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://openlayers.org/api/theme/default/style.css">
     <script src="js/jquery-1.11.1.js"></script>
     <script src="js/toast/toastr.js"></script>
     <link rel="stylesheet" href="http://openlayers.org/en/v3.0.0/css/ol.css" type="text/css">
     <script src="http://openlayers.org/en/v3.0.0/build/ol.js" type="text/javascript"></script>
-      <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script src="js/mainCloud.js">    
+    </script>
 
 </head>
 
-<body>
+<body onload="init">
     <header id="cabecera">
         <div class="item">
             <h3>El Weather en tu region</h3>
         </div>
         <ul id="nav" class="item">
-           <li><a href="index.html">Home</a>
+            <li><a href="index.html">Home</a>
             </li>
             <li><a href="mapa.hml">Mapa</a>
             </li>
         </ul>
     </header>
-    <section id="map" class="mapa"></section>
+    <section id="map" class="olmap"></section>
+    <div id="links"></div>
 </body>
-<script>
-    var map = new ol.Map({
-        layers: [
-     new ol.layer.Tile({
-                source: new ol.source.OSM()
-            })
-   ],
-        renderer: 'canvas',
-        target: 'map',
-        view: new ol.View({
-            center: [0, 0],
-            zoom: 2
-        })
-    });
-
-    //Añadimos un control de zoom 
-
-    map.addControl(new ol.control.ZoomSlider());
-
-</script>
 
 </html>

@@ -28,50 +28,27 @@ function tostada(mensaje, tipo) {
 }
 /*===  fin ===*/
 
-function funciona(posicion) {
-    var lon = posicion.coords.longitude;
-    var lat = posicion.coords.latitude;
-    //Center of map
-    var lonlat = new OpenLayers.LonLat(0, 0);
 
-    var map = new OpenLayers.Map("map-prec");
-    // Create OSM overlays
-    var mapnik = new OpenLayers.Layer.OSM();
-
-    var layer_cloud = new OpenLayers.Layer.XYZ(
-        "clouds",
-        "http://${s}.tile.openweathermap.org/map/clouds/${z}/${x}/${y}.png", {
-            isBaseLayer: false,
-            opacity: 0.7,
-            sphericalMercator: true
-        }
-    );
-
-    var layer_precipitation = new OpenLayers.Layer.XYZ(
-        "precipitation",
-        "http://${s}.tile.openweathermap.org/map/precipitation/${z}/${x}/${y}.png", {
-            isBaseLayer: false,
-            opacity: 0.7,
-            sphericalMercator: true
-        }
-    );
-
-
-    map.addLayers([mapnik, layer_precipitation, layer_cloud]);
-    map.setCenter(lonlat, 3)
-}
-
-function errorSituacion() {
-    tostada("Error en la situacion", 3);
-}
 
 function main() {
-    if (navigator.geolocation) { // Nos aseguramos de que el navegador soporta la API Geolocation
-        //navigator.geolocation.getCurrentPosition(visualizar, errorSituacion); 
-        navigator.geolocation.getCurrentPosition(funciona, errorSituacion); 
-        
-    } else {
-        tostada("No hay soporte de geolocalización", 2);
-    }
+      var map = new ol.Map({
+        layers: [
+     new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+   ],
+        renderer: 'canvas',
+        target: 'map',
+        view: new ol.View({
+            center: [0, 0],
+            zoom: 2
+        })
+    });
+
+    //Añadimos un control de zoom 
+
+    map.addControl(new ol.control.ZoomSlider());
+
+
 }
 window.addEventListener("load", main);
