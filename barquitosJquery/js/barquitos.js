@@ -100,8 +100,6 @@ var modelo = {
     }
 
 };
-
-
 var vista = {
     visualizarMensaje: function (mensaje) {
         $("#areamensaje").text(mensaje);
@@ -118,27 +116,87 @@ var vista = {
     }
 
 };
-// Objeto para procesar y contar los intentos de tocado y hundido
-var controlador = {
-    intentos: 0,
-
-    procesarIntento: function (intento) { //Intento contiene un string del tipo "G0"
-        this.intentos++;
-        var impacto = modelo.fuego(intento); //impacto contiene true si es un acierto
-        if (modelo.barcosHundidos === modelo.numeroBarcos) {
-            $("#dialog-message").text("Has hundido todos los barcos en " + this.intentos + " intentos");
-            $("#dialog-message").dialog({
-                modal: true,
-                buttons: {
-                    Ok: function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
+/* == Funciones para el Score == */
+function getScore() {
+    var scores = [];
+    if (localStorage.length !=0 ) {
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key.substring(0, 6) == "score_") {
+                scores.push( JSON.parse(localStorage.getItem(key)));
+            }
         }
     }
+    return scores;
 }
-// Función que analiza un disparo del usuario y si está dentro del panel devuelve la fila y la columna correspondientes (ej: "06") Ya no es necesaria
+
+function CompareForSort(obj1, obj2) {
+    if (obj1.score == obj2.score)
+        return 0;
+    if (obj1.score < obj2.score)
+        return -1;
+    else
+        return 1;
+}
+
+function setScore(intentos) {
+    var jugador = {
+        nombre: "jugador",
+        score: intentos
+    };
+    var scores = getScore();
+    scores.push(jugador);
+    scores.sort(CompareForSort);
+    for (var i = 0; i < scores.length; i++) {
+        var valor = JSON.stringify(scores[i]);
+        localStorage.setItem("score_" + i, valor);
+
+    }
+
+}
+function mostrarScore() {
+     $("#dialog-message").text("");
+    var ul = $("<ul>");
+    var scores = getScore();
+    for (var i = 0 ; i < scores.length; i++){
+       var li =  $("<li>").text(scores[i].nombre+ "   " +scores[i].score);
+        ul.append(li)
+    }
+     $("#dialog-score").html(ul);
+    
+                $("#dialog-message").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+    }
+    // fin Funciones
+    // Objeto para procesar y contar los intentos de tocado y hundido
+var controlador = {
+        intentos: 0,
+
+        procesarIntento: function (intento) { //Intento contiene un string del tipo "G0"
+            this.intentos++;
+            var impacto = modelo.fuego(intento); //impacto contiene true si es un acierto
+            if (modelo.barcosHundidos === modelo.numeroBarcos) {
+                $("#dialog-message").text("Has hundido todos los barcos en " + this.intentos + " intentos");
+                $("#dialog-message").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+                setScore(this.intentos);
+            }
+        }
+    }
+    // Función que analiza un disparo del usuario y si está dentro del panel devuelve la fila y la columna correspondientes (ej: "06") Ya no es necesaria
     // Manejadores de eventos
 function manejadorBotonFuego() {
         var entradaIntento = $("#entradaIntento");
@@ -179,6 +237,7 @@ function init() {
         $("#dialog").text(mensaje);
         $("#dialog").dialog("open");
     });
+    $("#botonScore").on("click",mostrarScore);
 
 }
 $(document).ready(init);
