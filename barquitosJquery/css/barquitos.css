@@ -20,11 +20,8 @@ div#panel {
 }
 
 #areamensaje {
-    position: absolute;
-    top: 0px;
-    left: 200px;
     color: rgb(83, 175, 19);
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 200px;
     z-index: 15px;
 }
@@ -84,7 +81,7 @@ td {
     height: 94px;    
 }
 #notificacion{
-
+margin-left: -100px;
 }
 #score {
         
