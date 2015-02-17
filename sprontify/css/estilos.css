@@ -1,0 +1,59 @@
+.central {
+    width: 35%;
+    margin: auto;
+}
+
+.oculto {
+    visibility: hidden;
+}
+
+#audioSeek {
+    background: #ccc;
+    border: 1px solid #000;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: block;
+    height: 5px;
+}
+
+#audioLoaded {
+    background: #0c0;
+    border: 1px solid #0c0;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: block;
+    height: 4px;
+}
+
+#audioTimes {
+    float: right;
+    list-style: none;
+    margin: 5px 0 0;
+}
+
+#audioTimes li {
+    font: bold 13px Arial, Helvetica sans-serif;
+    float: left;
+}
+
+#audioTimes li:first-child {
+    border-right: 1px solid #000;
+    margin-right: 15px;
+    padding-right: 15px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+li {
+    margin: 5px;
+    padding: 5px;
+    width: 150px;
+}
+.color {
+    background-color: red;
+}

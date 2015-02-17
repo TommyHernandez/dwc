@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spon-tify</title>
+    <!-- Modernizr -->
+    <script src="js/libs/modernizr-2.6.2.min.js"></script>
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/jquery-ui.structure.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/groundwork.css">
+    <link rel="stylesheet" href="css/estilos.css" type="text/css">
+    <script src="js/external/jquery/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/groundwork.all.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="container" role="main">
+       <h1>Spron-tify</h1>
+       <h6>El nombre no es una copia... Enserio, no lo es.</h6>
+        <div class="equalize row">
+            <div class="one half">
+                <ul id="lista" class="sortable animated">
+                   <li id="ac" data-src="audio/disparo.mp3"></li>
+                    <li  class="ui-state-default" data-src="audio/Twilight_off_the_thunder_god.mp3">Twilight of the thunder god - Amon Amarth</li>
+                    <li  class="ui-state-default" data-src="audio/SKRILLEX - Bangarang.mp3">Bangarang-SKRILLEX </li>
+                    <li  class="ui-state-default" data-src="audio/sonne.mp3"> Sonne - Rammstein</li>
+                    <li  class="ui-state-default" data-src="audio/the_figth_song.mp3">The figth song - Marilyn Manson</li>
+                </ul>
+            </div>
+            <div class="one half bounceInDown animated">
+                <div class="row">
+                   <div id="reventar">
+                   <audio id="reproductor" >
+                        Yu navegador no soporta reproduccion de audio o los formatos de estos.
+                    </audio>
+                   </div>
+
+                    <div class="playerControls">
+                        <button id="btnPlay" class="blue" title="Play">Play</button>
+                        <button id="btnPause" class=" oculto purple" title="Pause">Pause</button>
+                        <div id="audioSeek" class="oculto">
+                            <div id="audioLoaded"></div>
+                        </div>
+                        <div id="progressbar"></div>
+                        <ul id="audioTimes">
+                            <li id="audioElapsed">00:00:00</li>
+                            <li id="audioDuration">00:00:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <h6>¿Derechos de autor? donde que no los veo...</h6>
+    </div>
+
+
+
+</body>
+
+</html>
