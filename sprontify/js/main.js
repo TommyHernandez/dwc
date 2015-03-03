@@ -30,6 +30,42 @@ function listeners() {
     audio.addEventListener("timeupdate", setElapsed, true);
 }
 
+function next() {
+    var next = $('#ac').next();
+    if (next != undefined) {
+        $("#ac").removeAttr("id");
+        var src = next.attr("data-src");
+        next.attr("id", "ac");
+        $("#reventar").html('<audio id="reproductor" ><source src="' + src + '" type="audio/mpeg"></audio>')
+        $("#progressbar").progressbar({
+            value: 0
+        });
+        listeners();
+        play();
+    } else {
+        alert("Za terminao primo!");
+    }
+
+
+}
+
+function pre() {
+    var pre = $('#ac').prev();
+    if (next != "undefined") {
+        $("#ac").removeAttr("id");
+        var src = pre.attr("data-src");
+        pre.attr("id", "ac");
+        $("#reventar").html('<audio id="reproductor" ><source src="' + src + '" type="audio/mpeg"></audio>')
+        $("#progressbar").progressbar({
+            value: 0
+        });
+        listeners();
+        play();
+    } else {
+        alert("Za terminao primo!");
+    }
+}
+
 function formatTime(seconds) {
     var minute = 60,
         hour = minute * 60,
@@ -66,6 +102,8 @@ $(document).ready(function () {
         revert: "invalid"
     });
     $("ul, li").disableSelection();
+    /*Buscamos el primer item al cargar la pagina y le damos ID AC*/
+    $("li").first().attr("id", "ac");
     var src = $("#ac").attr("data-src");;
     $("#reproductor").append('<source src="' + src + '" type="audio/mpeg">');
     //Colocamos un escuchador al reproductor para saber cuando termina la canción
@@ -83,6 +121,8 @@ $(document).ready(function () {
     //
     $("#btnPlay").on("click", play);
     $("#btnPause").on("click", pause);
+    $("#btnPre").on("click", pre);
+    $("#btnNext").on("click", next);
     listeners();
 
 
