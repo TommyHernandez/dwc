@@ -106,13 +106,13 @@ var vista = {
     },
 
     visualizarTocado: function (localizacion) {
-        var celda = document.getElementById(localizacion);
-        celda.setAttribute("class", "tocado");
+        var celda = $("#"+localizacion);
+        celda.attr("class", "tocado");
     },
 
     visualizarAgua: function (localizacion) {
-        var celda = document.getElementById(localizacion);
-        celda.setAttribute("class", "agua");
+        var celda = $("#"+localizacion);
+        celda.attr("class", "agua");
     }
 
 };
@@ -129,7 +129,7 @@ function getScore() {
     }
     return scores;
 }
-
+/* === Esta funcion es la que nos determina como ordenará el sort, ya que queremos ordenar por un campo concreto === */
 function CompareForSort(obj1, obj2) {
     if (obj1.score == obj2.score)
         return 0;
@@ -139,9 +139,9 @@ function CompareForSort(obj1, obj2) {
         return 1;
 }
 
-function setScore(intentos) {
+function setScore(intentos, jugador) {
     var jugador = {
-        nombre: "jugador",
+        nombre: jugador,
         score: intentos
     };
     var scores = getScore();
@@ -155,16 +155,14 @@ function setScore(intentos) {
 
 }
 function mostrarScore() {
-     $("#dialog-message").text("");
     var ul = $("<ul>");
     var scores = getScore();
     for (var i = 0 ; i < scores.length; i++){
        var li =  $("<li>").text(scores[i].nombre+ "   " +scores[i].score);
         ul.append(li)
     }
-     $("#dialog-score").html(ul);
-    
-                $("#dialog-message").dialog({
+     $("#dialog-score").html(ul);    
+                $("#dialog-score").dialog({
                     modal: true,
                     buttons: {
                         Ok: function () {
@@ -178,7 +176,6 @@ function mostrarScore() {
     // Objeto para procesar y contar los intentos de tocado y hundido
 var controlador = {
         intentos: 0,
-
         procesarIntento: function (intento) { //Intento contiene un string del tipo "G0"
             this.intentos++;
             var impacto = modelo.fuego(intento); //impacto contiene true si es un acierto
@@ -192,7 +189,8 @@ var controlador = {
                         }
                     }
                 });
-                setScore(this.intentos);
+                var jugador = prompt('Introduce tu nombre');
+                setScore(this.intentos,jugador);
             }
         }
     }
@@ -213,7 +211,7 @@ function init() {
         numImagenes;
     numImagenes = imagenes.length;
     for (i = 0; i < numImagenes; i++) {
-        tempImg[i] = document.createElement("img");
+        tempImg[i] = $("<img/>");
         tempImg[i].src = imagenes[i];
     }
     // situa los barcos en el tablero
@@ -237,7 +235,7 @@ function init() {
         $("#dialog").text(mensaje);
         $("#dialog").dialog("open");
     });
-    $("#botonScore").on("click",mostrarScore);
+    $("#botonScore").on("click", mostrarScore);
 
 }
 $(document).ready(init);
